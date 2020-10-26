@@ -7,8 +7,11 @@ require __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use App\Commands\DateFilterCommand;
 
 $app = new Application();
+
+$app->add(new DateFilterCommand());
 
 $app->run(
     new ArgvInput(),

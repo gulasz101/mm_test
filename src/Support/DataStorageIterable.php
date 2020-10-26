@@ -25,6 +25,29 @@ class DataStorageIterable implements \Iterator
     }
 
     /**
+     * Allows to filter Iterable, returns new filtered instance.
+     * @param \Closure $whereClosure Usage same like with array_filter.
+     * @return static
+     */
+    public function where(\Closure $whereClosure)
+    {
+        $clone = clone $this;
+
+        $clone->pointer = 0;
+        $clone->data = Arr::where($this->data, $whereClosure);
+
+        return $clone;
+    }
+
+    /**
+     * @return int
+     */
+    public function count(): int
+    {
+        return count($this->data);
+    }
+
+    /**
      * @param $item
      */
     protected function addToStorage($item)
