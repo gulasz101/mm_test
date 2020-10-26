@@ -26,7 +26,7 @@ class Reader implements ReaderInterface
     {
         $reader = $this->detectReader($input);
 
-        $data = $reader->getDataArray();
+        return OfferCollection::createFromArray($reader->getDataArray());
     }
 
     protected function detectReader(string $input): RawDataReader
@@ -34,7 +34,6 @@ class Reader implements ReaderInterface
         switch (true) {
             case Str::of($input)->containsAll(['http', 'json']):
                 return new HttpJson($input);
-                break;
             default:
                 throw new \InvalidArgumentException('Input not supported: ' . $input);
         }
