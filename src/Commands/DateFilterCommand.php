@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace App\Commands;
 
 use App\Offer;
-use App\OfferCollection;
-use App\Reader;
 use Illuminate\Support\Carbon;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -17,8 +14,18 @@ use Symfony\Component\Console\Output\OutputInterface;
  * Class DateFilterCommand
  * @package App\Commands
  */
-class DateFilterCommand extends Command
+class DateFilterCommand extends OffersFilterCommand
 {
+    /**
+     * @var Carbon
+     */
+    protected $dateStart;
+
+    /**
+     * @var Carbon
+     */
+    protected $dateEnd;
+    
     /**
      * Configures the current command.
      */
@@ -28,6 +35,26 @@ class DateFilterCommand extends Command
             ->setDescription('Count by date range.')
             ->addArgument('start_date', InputArgument::REQUIRED, 'Pass the start date.')
             ->addArgument('end_date', InputArgument::REQUIRED, 'Pass the end date.');
+    }
+
+    /**
+     * Initializes the command after the input has been bound and before the input
+     * is validated.
+     *
+     * This is mainly useful when a lot of commands extends one main command
+     * where some things need to be initialized based on the input arguments and options.
+     *
+     * @see InputInterface::bind()
+     * @see InputInterface::validate()
+     */
+    protected function _initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->dateStart = Carbon::make($input->getArgument('start_date'));
+        $this->dateEnd = Carbon::make($input->getArgument('end_date'));
+
+        if ($this->dateStart->greaterThan($this->dateEnd)) {
+            throw new \InvalidArgumentException('date_start has to be lower than date_end');
+        }
     }
 
     /**
@@ -46,21 +73,11 @@ class DateFilterCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var OfferCollection $collection */
-        $collection = (new Reader())->read('https://5f973c4142706e0016956de4.mockapi.io/api/json/offers');
-
-        $dateStart = Carbon::make($input->getArgument('start_date'));
-        $dateEnd = Carbon::make($input->getArgument('end_date'));
-
-        if ($dateStart->greaterThan($dateEnd)) {
-            throw new \InvalidArgumentException('date_start has to be lower than date_end');
-        }
-
-        $count = $collection->where(
-            function (Offer $offer) use ($dateStart, $dateEnd) {
+        $count = $this->offers->where(
+            function (Offer $offer) {
                 if ($offer->hasQuantity() && $offer->getQuantity() > 0) {
-                    return $offer->hasStartDate() && $offer->getStartDate()->betweenIncluded($dateStart, $dateEnd)
-                        && $offer->hasEndDate() && $offer->getEndDate()->betweenIncluded($dateStart, $dateEnd);
+                    return $offer->hasStartDate() && $offer->getStartDate()->betweenIncluded($this->dateStart, $this->dateEnd)
+                        && $offer->hasEndDate() && $offer->getEndDate()->betweenIncluded($this->dateStart, $this->dateEnd);
                 }
 
                 return false;
