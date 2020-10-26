@@ -36,7 +36,7 @@ class Offer implements OfferInterface
     private $quantity;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     private $vendorId;
 
@@ -92,9 +92,9 @@ class Offer implements OfferInterface
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getVendorId(): ?int
+    public function getVendorId(): ?string
     {
         return $this->vendorId;
     }

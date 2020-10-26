@@ -63,7 +63,7 @@ interface OfferInterface
     public function getQuantity(): ?int;
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getVendorId(): ?int;
+    public function getVendorId(): ?string;
 }
