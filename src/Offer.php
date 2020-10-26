@@ -80,7 +80,7 @@ class Offer implements OfferInterface
      */
     public function getPrice(): ?float
     {
-        return $this->price;
+        return (float)$this->price;
     }
 
     /**
@@ -88,7 +88,7 @@ class Offer implements OfferInterface
      */
     public function getQuantity(): ?int
     {
-        return $this->quantity;
+        return (int)$this->quantity;
     }
 
     /**
@@ -114,7 +114,7 @@ class Offer implements OfferInterface
      */
     public function hasPrice(): bool
     {
-        return null !== $this->hasPrice();
+        return null !== $this->price;
     }
 
     /**
