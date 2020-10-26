@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Reader;
 
+use Illuminate\Http\Client\Factory;
 use Illuminate\Support\Facades\Http;
 
 /**
@@ -31,7 +32,10 @@ class HttpJson implements RawDataReader
      */
     public function getDataArray(): array
     {
-        $response = Http::timeout(5)
+        /** @var Http $http */
+        $http = new Factory();
+
+        $response = $http->timeout(5)
             ->acceptJson()
             ->get($this->input)
             ->throw();
