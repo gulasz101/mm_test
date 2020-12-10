@@ -31,8 +31,7 @@
         }
     ],
     "scripts": {
-        "test": "vendor/bin/phpunit --configuration=phpunit.xml",
-        "test-with-coverage": "vendor/bin/phpunit --configuration=phpunit.xml --coverage-html=code-coverage.html",
+        "test": "vendor/bin/phpunit",
         "ecs": "vendor/bin/ecs check src tests"
     }
 }
