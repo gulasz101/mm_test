@@ -40,7 +40,7 @@ jobs:
       run: composer run-script ecs
 
     - name: Run tests with coverage
-      run: ./vendor/bin/phpunit --configuration phpunit.xml --coverage-html=coverage
+      run: ./vendor/bin/phpunit --configuration=phpunit.xml --coverage-html=coverage
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
