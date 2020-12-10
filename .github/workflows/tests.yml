@@ -40,7 +40,7 @@ jobs:
       run: composer run-script ecs
 
     - name: Run tests with coverage
-      run: composer runs-cript test-with-coverage
+      run: composer run-script test-with-coverage
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
