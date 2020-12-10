@@ -37,4 +37,7 @@ jobs:
       run: composer run-script ecs
 
     - name: Run test suite
-      run: composer run-script test
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        coverage: pcov
