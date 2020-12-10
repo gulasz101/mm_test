@@ -17,11 +17,14 @@
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="false">
+    <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./tests</directory>
             <directory suffix=".php">./src</directory>
         </include>
+        <exclude>
+            <file>./src/run.php</file>
+        </exclude>
         <report>
             <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
         </report>
