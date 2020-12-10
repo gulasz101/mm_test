@@ -28,5 +28,9 @@
             "name": "Wojciech Guła",
             "email": "gulasz101@gmail.com"
         }
-    ]
+    ],
+    "scripts": {
+        "test": "vendor/bin/phpunit -c phpunit.xml",
+        "ecs": "vendor/bin/ecs check src tests @$"
+    }
 }
