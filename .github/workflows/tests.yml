@@ -1,10 +1,8 @@
-name: PHP Composer
+name: tests
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -12,10 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkoud code
+      uses: actions/checkout@v2
 
     - name: Validate composer.json and composer.lock
       run: composer validate
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 7.4
+        tools: composer:v2
+        coverage: pcov
 
     - name: Cache Composer packages
       id: composer-cache
@@ -30,14 +36,15 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
     - name: Run ECS check
       run: composer run-script ecs
 
-    - name: Run test suite
-      uses: shivammathur/setup-php@v2
+    - name: Run tests with coverage
+      run: ./vendor/bin/phpunit -c phpunit.xml --coverage-html=coverage
+
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v2
       with:
-        php-version: '7.4'
-        coverage: pcov
+        name: code-coverage-report
+        path: code-coverage.html
+
