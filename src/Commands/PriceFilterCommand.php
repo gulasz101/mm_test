@@ -16,12 +16,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 class PriceFilterCommand extends OffersFilterCommand
 {
     protected $priceFrom;
+
     protected $priceTo;
 
     /**
      * Configures the current command.
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('price_filter')
             ->setDescription('Count by price range.')
@@ -39,10 +40,10 @@ class PriceFilterCommand extends OffersFilterCommand
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function _initialize(InputInterface $input, OutputInterface $output)
+    protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
-        $this->priceFrom = (float)$input->getArgument('price_from');
-        $this->priceTo = (float)$input->getArgument('price_to');
+        $this->priceFrom = (float) $input->getArgument('price_from');
+        $this->priceTo = (float) $input->getArgument('price_to');
     }
 
     /**
@@ -71,7 +72,7 @@ class PriceFilterCommand extends OffersFilterCommand
             }
         )->count();
 
-        $output->writeln("$count offers matching price criteria.");
+        $output->writeln("${count} offers matching price criteria.");
 
         return 0;
     }

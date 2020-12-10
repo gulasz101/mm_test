@@ -25,11 +25,11 @@ class DateFilterCommand extends OffersFilterCommand
      * @var Carbon
      */
     protected $dateEnd;
-    
+
     /**
      * Configures the current command.
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('date_filter')
             ->setDescription('Count by date range.')
@@ -47,7 +47,7 @@ class DateFilterCommand extends OffersFilterCommand
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function _initialize(InputInterface $input, OutputInterface $output)
+    protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->dateStart = Carbon::make($input->getArgument('start_date'));
         $this->dateEnd = Carbon::make($input->getArgument('end_date'));
@@ -84,7 +84,7 @@ class DateFilterCommand extends OffersFilterCommand
             }
         )->count();
 
-        $output->writeln("$count offers matching criteria.");
+        $output->writeln("${count} offers matching criteria.");
 
         return 0;
     }

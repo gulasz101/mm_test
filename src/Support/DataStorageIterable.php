@@ -13,6 +13,7 @@ use Illuminate\Support\Arr;
 class DataStorageIterable implements \Iterator
 {
     private $pointer;
+
     private $data;
 
     /**
@@ -48,29 +49,6 @@ class DataStorageIterable implements \Iterator
     }
 
     /**
-     * @param $item
-     */
-    protected function addToStorage($item)
-    {
-        $this->data[] = $item;
-    }
-
-    /**
-     * @param $identifier
-     * @return array|\ArrayAccess|mixed
-     */
-    protected function getFromStorage($identifier)
-    {
-        return Arr::get(
-            $this->data,
-            $identifier,
-            function () {
-                throw new \InvalidArgumentException('Identifier not found.');
-            }
-        );
-    }
-
-    /**
      * Checks if current position is valid
      * @link https://php.net/manual/en/iterator.valid.php
      * @return bool The return value will be casted to boolean and then evaluated.
@@ -86,7 +64,7 @@ class DataStorageIterable implements \Iterator
      * @link https://php.net/manual/en/iterator.next.php
      * @return void Any returned value is ignored.
      */
-    public function next()
+    public function next(): void
     {
         ++$this->pointer;
     }
@@ -106,7 +84,7 @@ class DataStorageIterable implements \Iterator
      * @link https://php.net/manual/en/iterator.rewind.php
      * @return void Any returned value is ignored.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->pointer = 0;
     }
@@ -119,5 +97,28 @@ class DataStorageIterable implements \Iterator
     public function key()
     {
         return $this->pointer;
+    }
+
+    /**
+     * @param $item
+     */
+    protected function addToStorage($item): void
+    {
+        $this->data[] = $item;
+    }
+
+    /**
+     * @param $identifier
+     * @return array|\ArrayAccess|mixed
+     */
+    protected function getFromStorage($identifier)
+    {
+        return Arr::get(
+            $this->data,
+            $identifier,
+            function (): void {
+                throw new \InvalidArgumentException('Identifier not found.');
+            }
+        );
     }
 }

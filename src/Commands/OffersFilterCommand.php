@@ -31,7 +31,7 @@ abstract class OffersFilterCommand extends Command
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    final protected function initialize(InputInterface $input, OutputInterface $output)
+    final protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->_initialize($input, $output);
 
@@ -48,7 +48,7 @@ abstract class OffersFilterCommand extends Command
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function _initialize(InputInterface $input, OutputInterface $output)
+    protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
         //...
     }

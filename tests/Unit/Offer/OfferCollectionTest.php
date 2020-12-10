@@ -18,9 +18,15 @@ class OfferCollectionTest extends TestCase
     {
         $collection = OfferCollection::createFromArray(
             [
-                ['price' => 5],
-                ['price' => 20],
-                ['vendor_id' => 'foo:bar'],
+                [
+                    'price' => 5,
+                ],
+                [
+                    'price' => 20,
+                ],
+                [
+                    'vendor_id' => 'foo:bar',
+                ],
             ]
         );
 

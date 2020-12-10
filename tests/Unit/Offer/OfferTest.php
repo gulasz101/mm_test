@@ -15,7 +15,9 @@ class OfferTest extends TestCase
 {
     public function testPriceIsSet(): void
     {
-        $offer = new Offer(['price' => 200]);
+        $offer = new Offer([
+            'price' => 200,
+        ]);
 
         $this->assertEquals(200, $offer->getPrice());
     }

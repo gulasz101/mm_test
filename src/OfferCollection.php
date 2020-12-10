@@ -14,13 +14,12 @@ use App\Support\OfferInterface;
  */
 class OfferCollection extends DataStorageIterable implements OfferCollectionInterface
 {
-
     /**
      * Creates offer collection from array.
      * @param array $offers
      * @return OfferCollection
      */
-    public static function createFromArray(array $offers): OfferCollection
+    public static function createFromArray(array $offers): self
     {
         $collection = new self();
         foreach ($offers as $offerDataRow) {

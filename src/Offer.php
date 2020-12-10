@@ -80,7 +80,7 @@ class Offer implements OfferInterface
      */
     public function getPrice(): ?float
     {
-        return (float)$this->price;
+        return (float) $this->price;
     }
 
     /**
@@ -88,7 +88,7 @@ class Offer implements OfferInterface
      */
     public function getQuantity(): ?int
     {
-        return (int)$this->quantity;
+        return (int) $this->quantity;
     }
 
     /**
@@ -105,7 +105,7 @@ class Offer implements OfferInterface
      */
     public function hasVendorId(): bool
     {
-        return null !== $this->vendorId;
+        return $this->vendorId !== null;
     }
 
     /**
@@ -114,7 +114,7 @@ class Offer implements OfferInterface
      */
     public function hasPrice(): bool
     {
-        return null !== $this->price;
+        return $this->price !== null;
     }
 
     /**
@@ -123,16 +123,16 @@ class Offer implements OfferInterface
      */
     public function hasStartDate(): bool
     {
-        return null !== $this->startDate;
+        return $this->startDate !== null;
     }
 
     /**
      * Checks whether object has valid end date.
      * @return bool
      */
-    public function hasEndDate() : bool
+    public function hasEndDate(): bool
     {
-         return null !== $this->endDate;
+        return $this->endDate !== null;
     }
 
     /**
@@ -141,6 +141,6 @@ class Offer implements OfferInterface
      */
     public function hasQuantity(): bool
     {
-        return null !== $this->quantity;
+        return $this->quantity !== null;
     }
 }
