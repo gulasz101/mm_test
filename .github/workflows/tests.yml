@@ -21,6 +21,7 @@ jobs:
       with:
         php-version: 7.4
         tools: composer:v2
+        ini-values: pcov.directory=api, pcov.exclue=\"~vendor~\"
         coverage: pcov
 
     - name: Setup problem matchers for PHPUnit
