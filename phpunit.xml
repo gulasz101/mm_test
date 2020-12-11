@@ -19,8 +19,8 @@
 
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">./tests</directory>
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">tests</directory>
+            <directory suffix=".php">src</directory>
         </include>
         <exclude>
             <file>./src/run.php</file>
