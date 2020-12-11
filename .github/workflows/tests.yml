@@ -50,6 +50,9 @@ jobs:
         composer run-script test
         cat coverage.text
 
+    - name: Setup problem matchers for PHPUnit
+      run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
       with:
