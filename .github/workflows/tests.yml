@@ -36,6 +36,9 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Run lint check
+      run: composer run-script lint
+
     - name: Run ECS check
       run: composer run-script ecs
 

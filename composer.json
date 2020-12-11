@@ -12,7 +12,8 @@
     },
     "require-dev": {
         "symplify/easy-coding-standard": "^9.0",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "php-parallel-lint/php-parallel-lint": "^1.2"
     },
     "autoload": {
         "psr-4": {
@@ -32,6 +33,7 @@
     ],
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "ecs": "vendor/bin/ecs check src tests"
+        "ecs": "vendor/bin/ecs check src tests",
+        "lint": "vendor/bin/parallel-lint --exclude vendor ."
     }
 }
