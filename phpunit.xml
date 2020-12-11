@@ -26,7 +26,7 @@
             <file>./src/run.php</file>
         </exclude>
         <report>
-            <clover outputFile="clover.xml"/>
+            <clover outputFile="clover/clover.xml"/>
             <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
             <text outputFile="coverage.text" showUncoveredFiles="false" showOnlySummary="true"/>
         </report>

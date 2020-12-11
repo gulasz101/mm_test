@@ -60,12 +60,11 @@ jobs:
         name: code-coverage-report
         path: html-coverage
 
-    - name: Download artifacts
-      uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v2
       with:
-        name: coverage
+        name: clover
 
     - name: Coverage
       uses: TonyBogdanov/coverage@master
       with:
-        path: coverage
+        path: clover
