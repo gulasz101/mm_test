@@ -49,15 +49,9 @@ jobs:
 #      run: composer run-script phpstan
 
     - name: Run tests with coverage
-      run: composer run-script test
-
-    - name: Read coverage.text
-      id: coverage
-      uses: juliangruber/read-file-action@v1
-      with:
-        path: ./coverage.text
-    - name: Echo coverage.text
-      run: echo ${{ steps.coverage.outputs.content }}
+      run: |
+        composer run-script test
+        echo cat coverage.text
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
