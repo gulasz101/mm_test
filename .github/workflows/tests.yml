@@ -52,10 +52,12 @@ jobs:
       id: tests
       run: |
         composer run-script test
-        cat coverage.text
+        cat ./coverage.text
 
     - name: Coverage
       uses: TonyBogdanov/coverage@master
+      with:
+        path: ./
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
