@@ -7,11 +7,6 @@ on:
 jobs:
   build:
 
-    outputs:
-      code-coverage:
-        description: "Code coverage summary"
-        value: ${{ steps.tests.outputs.coverage }}
-
     runs-on: ubuntu-latest
 
     steps:
@@ -58,6 +53,9 @@ jobs:
       run: |
         composer run-script test
         echo "::set-output name={coverage}::{cat ./coverage.text}"
+
+    - name: Coverage summary
+      run: echo ${{ steps.tests.outputs.coverage }}
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
