@@ -52,10 +52,10 @@ jobs:
       id: tests
       run: |
         composer run-script test
-        echo "::debug::$(cat ./coverage.text)"
+        cat coverage.text
 
-    - name: Coverage summary
-      run: echo ${{ steps.tests.outputs.coverage }}
+    - name: Coverage
+      uses: TonyBogdanov/coverage@master
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
