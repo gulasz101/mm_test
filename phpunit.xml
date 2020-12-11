@@ -27,6 +27,7 @@
         </exclude>
         <report>
             <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
+            <text outputFile="coverage.text" showUncoveredFiles="false" showOnlySummary="true"/>
         </report>
     </coverage>
 </phpunit>

@@ -42,11 +42,13 @@ jobs:
     - name: Run ECS check
       run: composer run-script ecs
 
-    - name: Run phpstan check
-      run: composer run-script phpstan
+#    - name: Run phpstan check
+#      run: composer run-script phpstan
 
     - name: Run tests with coverage
-      run: composer run-script test
+      run: |
+        composer run-script test
+        cat coverage.text
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
