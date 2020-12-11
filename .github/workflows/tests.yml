@@ -51,6 +51,7 @@ jobs:
     - name: Run tests with coverage
       id: tests
       run: |
+        composer dump-autoload
         ./vendor/bin/phpunit
         [ -z "$(cat coverage/text | grep 'Classes: 100.00%')" ] && echo ::warning::$(cat coverage/text)
 
