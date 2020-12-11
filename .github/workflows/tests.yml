@@ -51,9 +51,9 @@ jobs:
     - name: Run tests with coverage
       id: tests
       run: |
-        cat ./phpunit.xml
         composer dump-autoload
         ./vendor/bin/phpunit
+        cat coverage/text
         [ -z "$(cat coverage/text | grep 'Classes: 100.00%')" ] && echo ::warning::$(cat coverage/text)
 
     - name: Archive code coverage results
