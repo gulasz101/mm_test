@@ -10,7 +10,7 @@ use App\Support\OfferInterface;
 
 /**
  * Class OfferCollection
- * @package App\Support
+ * @package App
  */
 class OfferCollection extends DataStorageIterable implements OfferCollectionInterface
 {
