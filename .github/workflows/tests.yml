@@ -42,6 +42,9 @@ jobs:
     - name: Run ECS check
       run: composer run-script ecs
 
+    - name: Run phpstan check
+      run: composer run-script phpstan
+
     - name: Run tests with coverage
       run: composer run-script test
 
