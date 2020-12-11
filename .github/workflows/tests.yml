@@ -52,7 +52,7 @@ jobs:
       id: tests
       run: |
         composer run-script test
-        echo "::set-output name=coverage::cat ./coverage.text"
+        echo "::set-output name=coverage::$(cat ./coverage.text)"
 
     - name: Coverage summary
       run: echo ${{ steps.tests.outputs.coverage }}
