@@ -7,12 +7,12 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-
     outputs:
       code-coverage:
         description: "Code coverage summary"
         value: ${{ steps.tests.outputs.coverage }}
+
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkoud code
