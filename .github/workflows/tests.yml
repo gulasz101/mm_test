@@ -9,6 +9,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    outputs:
+      code-coverage:
+        description: "Code coverage summary"
+        value: ${{ steps.tests.outputs.coverage }}
+
     steps:
     - name: Checkoud code
       uses: actions/checkout@v2
@@ -49,9 +54,10 @@ jobs:
 #      run: composer run-script phpstan
 
     - name: Run tests with coverage
+      id: tests
       run: |
         composer run-script test
-        echo "::set-output name=action_fruit::strawberry"
+        echo "::set-output name={coverage}::{cat ./coverage.text}"
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
