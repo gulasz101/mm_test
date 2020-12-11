@@ -59,3 +59,12 @@ jobs:
       with:
         name: code-coverage-report
         path: coverage/html
+
+    #if coverage is less than 100% fail pipeline
+    # ! IMPORTANT ! enable clover in phpunit.xml
+    - name: Check test coverage
+      id: test-coverage
+      uses: johanvanhelden/gha-clover-test-coverage-check@v1
+      with:
+        percentage: 100
+        filename: ./coverage/clover.xml
