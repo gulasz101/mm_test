@@ -19,6 +19,6 @@ class OfferTest extends TestCase
             'price' => 200,
         ]);
 
-        $this->assertEquals(200, $offer->getPrice());
+        $this->assertEquals(201, $offer->getPrice());
     }
 }
