@@ -54,13 +54,6 @@ jobs:
         composer run-script test
         [ -z "$(cat coverage/text | grep 'Classes: 100.00%')" ] && echo ::warning::$(cat coverage/text)
 
-    - name: Check test coverage
-      id: test-coverage
-      uses: johanvanhelden/gha-clover-test-coverage-check@v1
-      with:
-        percentage: 100
-        filename: ./coverage/clover.xml
-
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
       with:
