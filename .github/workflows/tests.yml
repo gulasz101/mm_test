@@ -57,7 +57,7 @@ jobs:
     - name: Coverage
       uses: TonyBogdanov/coverage@master
       with:
-        path: ./
+        path: .
 
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
