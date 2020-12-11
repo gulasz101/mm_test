@@ -52,7 +52,7 @@ jobs:
       id: tests
       run: |
         composer run-script test
-        cat ./coverage/text
+        [ -z "$(cat coverage/text | grep 'Classes: 100.00%')" ] && echo ::warning::$(cat coverage/text)
 
     - name: Check test coverage
       id: test-coverage
