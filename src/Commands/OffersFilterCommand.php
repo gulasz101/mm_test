@@ -65,7 +65,7 @@ abstract class OffersFilterCommand extends Command
             $input->getArguments(),
             function ($value, $key) use ($argumentName) {
                 if ($key === $argumentName) {
-                    if (!$value) {
+                    if (! $value) {
                         throw new \InvalidArgumentException('Argument required: ' . $argumentName);
                     }
 
