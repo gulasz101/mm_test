@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77f8bd3dff45c8b6f679a37330adc577",
+    "content-hash": "373517c7fb6fbc4920b81507dcc32f8e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -4251,28 +4251,31 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "0.4.10",
+            "version": "0.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "5c1eb9aac80cb236f1b7fbe52e691afe4cc9f430"
+                "reference": "98a088b17966bdf6ee25c8a4b634df313d8aa531"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/5c1eb9aac80cb236f1b7fbe52e691afe4cc9f430",
-                "reference": "5c1eb9aac80cb236f1b7fbe52e691afe4cc9f430",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/98a088b17966bdf6ee25c8a4b634df313d8aa531",
+                "reference": "98a088b17966bdf6ee25c8a4b634df313d8aa531",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "phing/phing": "^2.16.3",
-                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "consistence/coding-standard": "^3.5",
+                "ergebnis/composer-normalize": "^2.0.2",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "phing/phing": "^2.16.0",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12.60",
-                "phpstan/phpstan-strict-rules": "^0.12.5",
-                "phpunit/phpunit": "^7.5.20",
+                "phpstan/phpstan": "^0.12.26",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^6.3",
+                "slevomat/coding-standard": "^4.7.2",
                 "symfony/process": "^4.0"
             },
             "type": "library",
@@ -4295,9 +4298,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/0.4.10"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/master"
             },
-            "time": "2020-12-12T15:45:28+00:00"
+            "time": "2020-08-03T20:32:43+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -6839,6 +6842,40 @@
                 }
             ],
             "time": "2020-10-26T10:38:48+00:00"
+        },
+        {
+            "name": "symplify/easy-coding-standard-prefixed",
+            "version": "9.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symplify/easy-coding-standard-prefixed.git",
+                "reference": "bf9409399e63b39c30cd665a91d07d1dd12625d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard-prefixed/zipball/bf9409399e63b39c30cd665a91d07d1dd12625d4",
+                "reference": "bf9409399e63b39c30cd665a91d07d1dd12625d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "replace": {
+                "symplify/easy-coding-standard": "self.version"
+            },
+            "bin": [
+                "bin/ecs"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Prefixed scoped version of symplify/easy-coding-standard package",
+            "support": {
+                "source": "https://github.com/symplify/easy-coding-standard-prefixed/tree/9.0.9"
+            },
+            "time": "2020-12-13T12:36:38+00:00"
         },
         {
             "name": "symplify/easy-testing",
