@@ -15,9 +15,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class PriceFilterCommand extends OffersFilterCommand
 {
-    protected $priceFrom;
+    protected float $priceFrom;
 
-    protected $priceTo;
+    protected float $priceTo;
 
     /**
      * Configures the current command.
@@ -37,13 +37,15 @@ class PriceFilterCommand extends OffersFilterCommand
      * This is mainly useful when a lot of commands extends one main command
      * where some things need to be initialized based on the input arguments and options.
      *
-     * @see InputInterface::bind()
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @see InputInterface::validate()
+     * @see InputInterface::bind()
      */
-    protected function _initialize(InputInterface $input): void
+    protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
-        $this->priceFrom = (float) $input->getArgument('price_from');
-        $this->priceTo = (float) $input->getArgument('price_to');
+        $this->priceFrom = (float) $this->getArgumentOrFail('price_from', $input, $output);
+        $this->priceTo = (float) $this->getArgumentOrFail('price_to', $input, $output);
     }
 
     /**
@@ -56,7 +58,7 @@ class PriceFilterCommand extends OffersFilterCommand
      *
      * @return int 0 if everything went fine, or an exit code
      *
-     * @throws LogicException When this abstract method is not implemented
+     * @throws \LogicException When this abstract method is not implemented
      *
      * @see setCode()
      */

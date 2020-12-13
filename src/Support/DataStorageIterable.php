@@ -100,7 +100,7 @@ class DataStorageIterable implements \Iterator
     }
 
     /**
-     * @param $item
+     * @param mixed $item
      */
     protected function addToStorage($item): void
     {
@@ -108,7 +108,7 @@ class DataStorageIterable implements \Iterator
     }
 
     /**
-     * @param $identifier
+     * @param string|int $identifier
      * @return array|\ArrayAccess|mixed
      */
     protected function getFromStorage($identifier)

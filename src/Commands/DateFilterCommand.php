@@ -16,9 +16,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DateFilterCommand extends OffersFilterCommand
 {
-    protected ?\Carbon\Carbon $dateStart;
+    protected \Carbon\Carbon $dateStart;
 
-    protected ?\Carbon\Carbon $dateEnd;
+    protected \Carbon\Carbon $dateEnd;
 
     /**
      * Configures the current command.
@@ -38,13 +38,15 @@ class DateFilterCommand extends OffersFilterCommand
      * This is mainly useful when a lot of commands extends one main command
      * where some things need to be initialized based on the input arguments and options.
      *
-     * @see InputInterface::bind()
+     * @param InputInterface $input
+     * @param OutputInterface $output
      * @see InputInterface::validate()
+     * @see InputInterface::bind()
      */
-    protected function _initialize(InputInterface $input): void
+    protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
-        $this->dateStart = Carbon::make($input->getArgument('start_date'));
-        $this->dateEnd = Carbon::make($input->getArgument('end_date'));
+        $this->dateStart = Carbon::parse($this->getArgumentOrFail('start_date', $input, $output));
+        $this->dateEnd = Carbon::parse($this->getArgumentOrFail('end_date', $input, $output));
 
         if ($this->dateStart->greaterThan($this->dateEnd)) {
             throw new \InvalidArgumentException('date_start has to be lower than date_end');
@@ -61,7 +63,7 @@ class DateFilterCommand extends OffersFilterCommand
      *
      * @return int 0 if everything went fine, or an exit code
      *
-     * @throws LogicException When this abstract method is not implemented
+     * @throws \LogicException When this abstract method is not implemented
      *
      * @see setCode()
      */
@@ -70,8 +72,8 @@ class DateFilterCommand extends OffersFilterCommand
         $count = $this->offers->where(
             function (Offer $offer) {
                 if ($offer->hasQuantity() && $offer->getQuantity() > 0) {
-                    return $offer->hasStartDate() && $offer->getStartDate()->betweenIncluded($this->dateStart, $this->dateEnd)
-                        && $offer->hasEndDate() && $offer->getEndDate()->betweenIncluded($this->dateStart, $this->dateEnd);
+                    return $offer->hasStartDate() && $offer->getStartDateOrFail()->betweenIncluded($this->dateStart, $this->dateEnd)
+                        && $offer->hasEndDate() && $offer->getEndDateOrFail()->betweenIncluded($this->dateStart, $this->dateEnd);
                 }
 
                 return false;

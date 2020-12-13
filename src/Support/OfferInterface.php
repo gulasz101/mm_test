@@ -45,12 +45,12 @@ interface OfferInterface
     /**
      * @return CarbonImmutable|null
      */
-    public function getStartDate(): ?CarbonImmutable;
+    public function getStartDateOrFail(): ?CarbonImmutable;
 
     /**
      * @return CarbonImmutable|null
      */
-    public function getEndDate(): ?CarbonImmutable;
+    public function getEndDateOrFail(): ?CarbonImmutable;
 
     /**
      * @return float|null

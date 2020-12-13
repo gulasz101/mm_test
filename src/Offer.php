@@ -32,11 +32,11 @@ class Offer implements OfferInterface
     public function __construct(array $data)
     {
         if ($startDate = Arr::get($data, 'start_date')) {
-            $this->startDate = Carbon::make($startDate)->toImmutable();
+            $this->startDate = Carbon::parse($startDate)->toImmutable();
         }
 
         if ($endDate = Arr::get($data, 'end_date')) {
-            $this->endDate = Carbon::make($endDate)->toImmutable();
+            $this->endDate = Carbon::parse($endDate)->toImmutable();
         }
 
         $this->price = Arr::get($data, 'price');
@@ -45,19 +45,27 @@ class Offer implements OfferInterface
     }
 
     /**
-     * @return CarbonImmutable|null
+     * @return CarbonImmutable
      */
-    public function getStartDate(): ?CarbonImmutable
+    public function getStartDateOrFail(): CarbonImmutable
     {
-        return $this->startDate;
+        if (isset($this->startDate)) {
+            return $this->startDate;
+        }
+
+        throw new \InvalidArgumentException('Missing startDate in offer');
     }
 
     /**
-     * @return CarbonImmutable|null
+     * @return CarbonImmutable
      */
-    public function getEndDate(): ?CarbonImmutable
+    public function getEndDateOrFail(): CarbonImmutable
     {
-        return $this->endDate;
+        if (isset($this->endDate)) {
+            return $this->endDate;
+        }
+
+        throw new \InvalidArgumentException('Missing endDate in offer.');
     }
 
     /**

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Support\OfferCollectionInterface;
 use App\Support\Reader\HttpJson;
 use App\Support\Reader\RawDataReader;
 use App\Support\ReaderInterface;
@@ -20,9 +19,9 @@ class Reader implements ReaderInterface
      * Read in incoming data and parse to objects
      *
      * @param string $input
-     * @return OfferCollectionInterface
+     * @return OfferCollection
      */
-    public function read(string $input): OfferCollectionInterface
+    public function read(string $input): OfferCollection
     {
         $reader = $this->detectReader($input);
 
