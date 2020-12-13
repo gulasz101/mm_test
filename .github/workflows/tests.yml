@@ -40,20 +40,19 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-#    - name: Run lint check
-#      run: composer run-script lint
+    - name: Run lint check
+      run: vendor/bin/parallel-lint --exclude vendor .
 #
-#    - name: Run ECS check
-#      run: composer run-script ecs
+    - name: Run ECS check
+      run: vendor/bin/ecs check src tests
 
-#    - name: Run phpstan check
-#      run: composer run-script phpstan
+    - name: Run phpstan check
+      run: vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=512M
 
     - name: Run tests with coverage
       id: tests
       run: |
-        composer dump-autoload
-        ./vendor/bin/phpunit
+        vendor/bin/phpunit
         cat coverage/text
         [ -z "$(cat coverage/text | grep 'Classes: 100.00%')" ] && echo ::warning::$(cat coverage/text)
 

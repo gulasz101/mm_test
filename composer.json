@@ -36,9 +36,5 @@
         }
     ],
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "ecs": "vendor/bin/ecs check src tests",
-        "lint": "vendor/bin/parallel-lint --exclude vendor .",
-        "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon"
     }
 }
