@@ -12,9 +12,9 @@ use Illuminate\Support\Arr;
  */
 class DataStorageIterable implements \Iterator
 {
-    private $pointer;
+    private int $pointer;
 
-    private $data;
+    private array $data;
 
     /**
      * DataStorageIterable constructor.

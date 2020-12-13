@@ -40,7 +40,7 @@ class PriceFilterCommand extends OffersFilterCommand
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function _initialize(InputInterface $input, OutputInterface $output): void
+    protected function _initialize(InputInterface $input): void
     {
         $this->priceFrom = (float) $input->getArgument('price_from');
         $this->priceTo = (float) $input->getArgument('price_to');

@@ -7,7 +7,7 @@ namespace App;
 use App\Support\OfferInterface;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 /**
  * Class Offer
@@ -15,30 +15,15 @@ use Illuminate\Support\Carbon;
  */
 class Offer implements OfferInterface
 {
-    /**
-     * @var CarbonImmutable|null
-     */
-    private $startDate;
+    private ?\Carbon\CarbonImmutable $startDate;
 
-    /**
-     * @var CarbonImmutable|null
-     */
-    private $endDate;
+    private ?\Carbon\CarbonImmutable $endDate;
 
-    /**
-     * @var float|null
-     */
-    private $price;
+    private ?float $price;
 
-    /**
-     * @var int|null
-     */
-    private $quantity;
+    private ?int $quantity;
 
-    /**
-     * @var string|null
-     */
-    private $vendorId;
+    private ?string $vendorId;
 
     /**
      * Offer constructor.

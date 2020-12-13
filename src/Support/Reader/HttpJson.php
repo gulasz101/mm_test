@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Http;
  */
 class HttpJson implements RawDataReader
 {
-    /** @var string */
-    protected $input;
+    protected string $input;
 
     /**
      * HttpJson constructor.

@@ -16,10 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 abstract class OffersFilterCommand extends Command
 {
-    /**
-     * @var OfferCollection
-     */
-    protected $offers;
+    protected ?\App\Support\OfferCollectionInterface $offers;
 
     /**
      * Initializes the command after the input has been bound and before the input
@@ -48,7 +45,7 @@ abstract class OffersFilterCommand extends Command
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function _initialize(InputInterface $input, OutputInterface $output): void
+    protected function _initialize(InputInterface $input): void
     {
         //...
     }

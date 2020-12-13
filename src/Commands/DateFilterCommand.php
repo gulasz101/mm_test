@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Commands;
 
 use App\Offer;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -16,15 +16,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DateFilterCommand extends OffersFilterCommand
 {
-    /**
-     * @var Carbon
-     */
-    protected $dateStart;
+    protected ?\Carbon\Carbon $dateStart;
 
-    /**
-     * @var Carbon
-     */
-    protected $dateEnd;
+    protected ?\Carbon\Carbon $dateEnd;
 
     /**
      * Configures the current command.
@@ -47,7 +41,7 @@ class DateFilterCommand extends OffersFilterCommand
      * @see InputInterface::bind()
      * @see InputInterface::validate()
      */
-    protected function _initialize(InputInterface $input, OutputInterface $output): void
+    protected function _initialize(InputInterface $input): void
     {
         $this->dateStart = Carbon::make($input->getArgument('start_date'));
         $this->dateEnd = Carbon::make($input->getArgument('end_date'));
