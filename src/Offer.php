@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App;
 
 use App\Support\OfferInterface;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
-use Carbon\Carbon;
 
 /**
  * Class Offer
