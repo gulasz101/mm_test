@@ -59,7 +59,7 @@ abstract class OffersFilterCommand extends Command
      * @param OutputInterface $output
      * @return string
      */
-    protected function getArgumentOrFail(string $argumentName, InputInterface $input, OutputInterface $output): string
+    protected function getArgumentOrFail(string $argumentName, InputInterface $input): string
     {
         return Arr::first(
             $input->getArguments(),
