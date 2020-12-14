@@ -16,7 +16,10 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class DateFilterCommand extends OffersFilterCommand
 {
-    protected ?\Carbon\Carbon $dateStart;
+    /**
+     * @var Carbon
+     */
+    protected $dateStart;
 
     protected \Carbon\Carbon $dateEnd;
 
