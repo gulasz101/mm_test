@@ -15,7 +15,8 @@
         "phpunit/phpunit": "^9.3",
         "symplify/easy-coding-standard-prefixed": "^9.0",
         "rector/rector-prefixed": "0.8.7",
-        "phpstan/phpstan": "^0.12.62"
+        "phpstan/phpstan": "^0.12.62",
+        "nikic/php-parser": "4.9.*"
     },
     "autoload": {
         "psr-4": {
