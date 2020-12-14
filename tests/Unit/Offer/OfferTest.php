@@ -18,7 +18,7 @@ class OfferTest extends TestCase
         $offer = new Offer([
             'price' => 200,
         ]);
-
+        $this->assertTrue(false);
         $this->assertEquals(200, $offer->getPrice());
     }
 }
