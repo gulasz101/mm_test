@@ -45,8 +45,8 @@ class DateFilterCommand extends OffersFilterCommand
      */
     protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
-        $this->dateStart = Carbon::parse($this->getArgumentOrFail('start_date', $input, $output));
-        $this->dateEnd = Carbon::parse($this->getArgumentOrFail('end_date', $input, $output));
+        $this->dateStart = Carbon::parse($this->getArgumentOrFail('start_date', $input));
+        $this->dateEnd = Carbon::parse($this->getArgumentOrFail('end_date', $input));
 
         if ($this->dateStart->greaterThan($this->dateEnd)) {
             throw new \InvalidArgumentException('date_start has to be lower than date_end');

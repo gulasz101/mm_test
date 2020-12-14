@@ -44,8 +44,8 @@ class PriceFilterCommand extends OffersFilterCommand
      */
     protected function _initialize(InputInterface $input, OutputInterface $output): void
     {
-        $this->priceFrom = (float) $this->getArgumentOrFail('price_from', $input, $output);
-        $this->priceTo = (float) $this->getArgumentOrFail('price_to', $input, $output);
+        $this->priceFrom = (float) $this->getArgumentOrFail('price_from', $input);
+        $this->priceTo = (float) $this->getArgumentOrFail('price_to', $input);
     }
 
     /**

@@ -56,7 +56,6 @@ abstract class OffersFilterCommand extends Command
     /**
      * @param string $argumentName
      * @param InputInterface $input
-     * @param OutputInterface $output
      * @return string
      */
     protected function getArgumentOrFail(string $argumentName, InputInterface $input): string
